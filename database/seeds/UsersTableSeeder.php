@@ -12,9 +12,25 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class,1)->create([
-            'email' => 'admin@email.com',
-            'password' => \Hash::make('123456')
-        ]);
+        $dados = [
+            [
+                'name' => 'Admin',
+                'email' => 'admin@email.com',
+                'password' => \Hash::make('123456'),
+                'tipo_user_id' => '1'
+             ],[
+                'name' => 'Funcionario',
+                'email' => 'funcionario@email.com',
+                'password' => \Hash::make('123456'),
+                'tipo_user_id' => '2'
+             ],[
+                'name' => 'Cliente',
+                'email' => 'Cliente@email.com',
+                'password' => \Hash::make('123456'),
+                'tipo_user_id' => '3'
+            ]
+         ];
+ 
+         DB::table('users')->insert($dados);
     }
 }
