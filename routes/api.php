@@ -13,8 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-Route::post('login', 'Api\AuthController@login');
+Route::name('api.login')->post('login', 'Api\AuthController@login');
+Route::post('refresh', 'Api\AuthController@refresh');
+
+Route::group(['middleware' => 'auth:api'], function (){
+    Route::get('users', function(){
+        return \App\User::all();
+    });
+    Route::post('logout', 'Api\AuthController@logout');
+});
