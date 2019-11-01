@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'jwt.refresh' => RefreshToken::class,
         'assign.guard' => \App\Http\Middleware\AssignGuard::class,
+        'cors' => \App\Http\Middleware\Cors::class, 
     ];
 
     /**

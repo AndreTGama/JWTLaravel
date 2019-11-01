@@ -27,26 +27,22 @@ use Illuminate\Http\Request;
 //     Route::post('logout', 'Api\AuthController@logout');
 // });
 
-Route::post('login', 'Api\AuthController@otherWaylogin');
+Route::post('login','Api\AuthController@otherWaylogin');
 
-
-Route::group(['prefix' => 'admin','middleware' => ['assign.guard:Admin','jwt.auth']],function ()
-{
+Route::group(['prefix' => 'admin','middleware' =>['assign.guard:Admin','jwt.auth']],function (){
    Route::get('',function(){
-       return 'hello';
+       return 'Hello Admin';
    });
 });
 
-Route::group(['prefix' => 'funcionario','middleware'=>['assign.guard:Funcionario','jwt.auth']],function ()
-{
+Route::group(['prefix' => 'funcionario','middleware'=>['assign.guard:Funcionario','jwt.auth']],function (){
     Route::get('',function(){
-        return 'funcionario';
+        return 'Hello Funcionario';
     });
 });
 
-Route::group(['prefix' => 'cliente', 'middleware' => ['assign.guard:Cliente','jwt.auth']],function ()
-{
+Route::group(['prefix' => 'cliente', 'middleware' =>['assign.guard:Cliente','jwt.auth']],function (){
     Route::get('',function(){
-        return 'Cliente';
+        return 'Hello Cliente';
     });
 });
