@@ -37,7 +37,7 @@ class AuthController extends Controller
         $tipoUser = DB::table('users')->join('tipo_users', 'users.tipo_user_id', '=', 'tipo_users.id')
         ->select('tipo_user')->where('email', '=', $email)->first();
         $tipo = $tipoUser->tipo_user;
-        $token = Auth::guard($tipo)->attempt($credentials);
+        $token = JWTAuth::attempt($credentials);
         return $this->responseToken($token);
     }
 
