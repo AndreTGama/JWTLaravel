@@ -46,6 +46,24 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'Admin' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'Funcionario' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'Cliente' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -67,6 +85,21 @@ return [
 
     'providers' => [
         'users' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
+
+        'Admin' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
+
+        'Funcionario' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
+
+        'Cliente' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],

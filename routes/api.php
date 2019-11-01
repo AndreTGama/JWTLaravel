@@ -13,16 +13,40 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// Route::name('api.login')->post('login', 'Api\AuthController@login');
+// Route::post('refresh', 'Api\AuthController@refresh');
+
+// Route::group(['middleware' => 'auth:api'], function (){
+//     Route::get('users', function(){
+//         return \App\User::all();
+//     });
+//     Route::post('logout', 'Api\AuthController@logout');
+// });
+
+Route::post('login', 'Api\AuthController@otherWaylogin');
+
+
+Route::group(['prefix' => 'admin','middleware' => ['assign.guard:Admin','jwt.auth']],function ()
+{
+   Route::get('',function(){
+       return 'hello';
+   });
 });
 
-Route::name('api.login')->post('login', 'Api\AuthController@login');
-Route::post('refresh', 'Api\AuthController@refresh');
-
-Route::group(['middleware' => 'auth:api'], function (){
-    Route::get('users', function(){
-        return \App\User::all();
+Route::group(['prefix' => 'funcionario','middleware'=>['assign.guard:Funcionario','jwt.auth']],function ()
+{
+    Route::get('',function(){
+        return 'funcionario';
     });
-    Route::post('logout', 'Api\AuthController@logout');
+});
+
+Route::group(['prefix' => 'cliente', 'middleware' => ['assign.guard:Cliente','jwt.auth']],function ()
+{
+    Route::get('',function(){
+        return 'Cliente';
+    });
 });
