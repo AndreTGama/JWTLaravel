@@ -49,19 +49,19 @@ return [
 
         'Admin' => [
             'driver' => 'jwt',
-            'provider' => 'users',
+            'provider' => 'Admin',
             'hash' => false,
         ],
 
         'Funcionario' => [
             'driver' => 'jwt',
-            'provider' => 'users',
+            'provider' => 'Funcionario',
             'hash' => false,
         ],
 
         'Cliente' => [
             'driver' => 'jwt',
-            'provider' => 'users',
+            'provider' => 'Cliente',
             'hash' => false,
         ],
     ],

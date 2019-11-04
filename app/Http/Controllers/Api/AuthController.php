@@ -24,20 +24,24 @@ class AuthController extends Controller
     public function login(Request $req){
         $this->validateLogin($req);
         $credentials = $this->credentials($req);
-
-        $token =JWTAuth::attempt($credentials);
-
-        return $this->responseToken($token);
+        $email = $credentials['email'];
+        $tipoUser = DB::table('users')->join('tipo_users', 'users.tipo_user_id', '=', 'tipo_users.id')
+        ->select('tipo_user')->where('email', '=', $email)->first();
+        $tipo = $tipoUser->tipo_user;
+        $token = Auth::guard($tipo)->attempt($credentials);
+        if($token){ 
+            return $this->responseToken($token);
+        }else{
+            return response()->json(['message' => 'Erro ao Fazer Login tente novamente.']);
+        }
     }
 
     public function otherWaylogin(Request $req){
         $this->validateLogin($req);
         $credentials = $this->credentials($req);
-        $email = $credentials['email'];
-        $tipoUser = DB::table('users')->join('tipo_users', 'users.tipo_user_id', '=', 'tipo_users.id')
-        ->select('tipo_user')->where('email', '=', $email)->first();
-        $tipo = $tipoUser->tipo_user;
+
         $token = JWTAuth::attempt($credentials);
+
         return $this->responseToken($token);
     }
 

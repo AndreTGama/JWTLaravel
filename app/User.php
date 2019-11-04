@@ -61,4 +61,7 @@ class User extends Authenticatable implements JWTSubject
             'tipo_user_id' => $this->tipo_user_id
         ];
     }
+    public function tipoUser(){
+        return $this->tipo_user_id;
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,21 +28,22 @@ use Illuminate\Http\Request;
 //     Route::post('logout', 'Api\AuthController@logout');
 // });
 
-Route::post('login','Api\AuthController@otherWaylogin');
+Route::post('login','Api\AuthController@login');
+Route::post('logout','Api\AuthController@logout');
 
-Route::group(['prefix' => 'admin','middleware' =>['assign.guard:Admin','jwt.auth']],function (){
+Route::group(['prefix' => 'admin', 'middleware' => 'jwt.auth'],function (){
    Route::get('',function(){
        return 'Hello Admin';
    });
 });
 
-Route::group(['prefix' => 'funcionario','middleware'=>['assign.guard:Funcionario','jwt.auth']],function (){
+Route::group(['prefix' => 'funcionario', 'middleware' => 'jwt.auth'],function (){
     Route::get('',function(){
         return 'Hello Funcionario';
     });
 });
 
-Route::group(['prefix' => 'cliente', 'middleware' =>['assign.guard:Cliente','jwt.auth']],function (){
+Route::group(['prefix' => 'cliente', 'middleware' => 'jwt.auth'],function (){
     Route::get('',function(){
         return 'Hello Cliente';
     });
