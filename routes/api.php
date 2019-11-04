@@ -29,21 +29,19 @@ use Illuminate\Support\Facades\Auth;
 // });
 
 Route::post('login','Api\AuthController@login');
-Route::post('logout','Api\AuthController@logout');
+Route::get('logout','Api\AuthController@logout');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'jwt.auth'],function (){
-   Route::get('',function(){
-       return 'Hello Admin';
-   });
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'],function (){
+   Route::get('','Api\AdminController@index');
 });
 
-Route::group(['prefix' => 'funcionario', 'middleware' => 'jwt.auth'],function (){
+Route::group(['prefix' => 'funcionario', 'middleware' => 'auth:api'],function (){
     Route::get('',function(){
         return 'Hello Funcionario';
     });
 });
 
-Route::group(['prefix' => 'cliente', 'middleware' => 'jwt.auth'],function (){
+Route::group(['prefix' => 'cliente', 'middleware' => 'auth:api'],function (){
     Route::get('',function(){
         return 'Hello Cliente';
     });

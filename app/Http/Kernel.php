@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'jwt.refresh' => RefreshToken::class,
         'auth.jwt' => \App\Http\Middleware\Authenticate::class,
         'assign.guard' => \App\Http\Middleware\AssignGuard::class,
+        'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
     ];
 
     /**
