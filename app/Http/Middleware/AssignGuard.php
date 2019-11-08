@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Middleware;
 use Closure;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
 class AssignGuard
 {
     /**
@@ -10,10 +12,13 @@ class AssignGuard
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-        if($guard != null)
-            auth()->shouldUse($guard);
+        $token = JWTAuth::getToken();
+        $decode = JWTAuth::decode($token);
+        $id = $decode['tipo_user_id'];
+        if($id != null)
+            auth()->shouldUse($id);
         return $next($request);
     }
 }

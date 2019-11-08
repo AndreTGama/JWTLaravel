@@ -31,18 +31,19 @@ use Illuminate\Support\Facades\Auth;
 Route::post('login','Api\AuthController@login');
 Route::get('logout','Api\AuthController@logout');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:api'],function (){
-   Route::get('','Api\AdminController@index');
+
+Route::group(['prefix' => 'admin','middleware' => 'assign.guard'], function(){
+   Route::name('admin')->get('','Api\AdminController@index');
 });
 
-Route::group(['prefix' => 'funcionario', 'middleware' => 'auth:api'],function (){
-    Route::get('',function(){
-        return 'Hello Funcionario';
+Route::group(['prefix' => 'funcionario', 'middleware' => 'assign.guard'], function(){
+    Route::name('funcionario')->get('',function(){
+        return 'Hello World';
     });
 });
 
-Route::group(['prefix' => 'cliente', 'middleware' => 'auth:api'],function (){
-    Route::get('',function(){
+Route::group(['prefix' => 'cliente', 'middleware' => 'assign.guard'],function (){
+    Route::name('cliente')->get('',function(){
         return 'Hello Cliente';
     });
 });

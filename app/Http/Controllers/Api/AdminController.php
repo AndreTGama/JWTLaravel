@@ -13,7 +13,7 @@ class AdminController extends Controller
         $token = JWTAuth::getToken();
         $decode = JWTAuth::decode($token);
         $email = $decode['email'];
-        $users = DB::table('users')->join('tipo_users', 'users.tipo_user_id', '=', 'tipo_users.id')->where('email', '=', $email)->get();    
+        $users = DB::table('users')->join('tipo_users', 'users.tipo_user_id', '=', 'tipo_users.id')->where('email', '=', $email)->get();
         return response()->json(['user' => $users]);
     }
 }
