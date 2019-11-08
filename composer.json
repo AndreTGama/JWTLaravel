@@ -12,7 +12,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^1.0",
-        "tymon/jwt-auth": "dev-develop#103739700dc0358039a33b5bc912475"
+        "tymon/jwt-auth": "dev-develop#e190b6a75372e7e5e3a6d2cf0e4456313412299f"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dfe99889922450feaf422096a422b7e4",
+    "content-hash": "5b67450c70d02ddcfc8d31e98125bca5",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3070,12 +3070,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tymondesigns/jwt-auth.git",
-                "reference": "103739700dc0358039a33b5bc912475"
+                "reference": "e190b6a75372e7e5e3a6d2cf0e4456313412299f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/103739700dc0358039a33b5bc912475",
-                "reference": "103739700dc0358039a33b5bc912475",
+                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/e190b6a75372e7e5e3a6d2cf0e4456313412299f",
+                "reference": "e190b6a75372e7e5e3a6d2cf0e4456313412299f",
                 "shasum": ""
             },
             "require": {
@@ -3137,7 +3137,7 @@
                 "jwt",
                 "laravel"
             ],
-            "time": "2019-09-09T03:33:47+00:00"
+            "time": "2018-09-04T19:48:02+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
